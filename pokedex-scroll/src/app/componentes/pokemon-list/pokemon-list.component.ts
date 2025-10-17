@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, RouterModule, CardComponent, FormsModule],
   templateUrl: './pokemon-list.component.html',
-  styleUrl: './pokemon-list.component.css'
+  styleUrl: './pokemon-list.component.css',
 })
 export class PokemonListComponent implements OnInit, OnDestroy {
   pokemonList: Pokemon[] = [];
@@ -42,7 +42,7 @@ export class PokemonListComponent implements OnInit, OnDestroy {
       },
       error: (error) => {
         console.error('Error loading types:', error);
-      }
+      },
     });
   }
 
@@ -58,18 +58,20 @@ export class PokemonListComponent implements OnInit, OnDestroy {
       error: (error) => {
         console.error('Error loading Pokémon:', error);
         this.isLoading = false;
-      }
+      },
     });
   }
 
   async loadPokemonDetails(pokemonItems: PokemonListItem[]): Promise<void> {
-    const promises = pokemonItems.map(item =>
+    const promises = pokemonItems.map((item) =>
       this.pokemonService.getPokemonByUrl(item.url).toPromise()
     );
 
     try {
       const pokemonDetails = await Promise.all(promises);
-      const validPokemon = pokemonDetails.filter(p => p !== undefined && p !== null) as Pokemon[];
+      const validPokemon = pokemonDetails.filter(
+        (p) => p !== undefined && p !== null
+      ) as Pokemon[];
 
       if (this.selectedType) {
         // Cuando hay filtro, reemplazar la lista
@@ -92,8 +94,11 @@ export class PokemonListComponent implements OnInit, OnDestroy {
 
     this.pokemonService.getPokemonList(this.limit, this.offset).subscribe({
       next: async (response) => {
-        const newPokemonItems = response.results.filter(newItem =>
-          !this.allPokemon.some(existingItem => existingItem.name === newItem.name)
+        const newPokemonItems = response.results.filter(
+          (newItem) =>
+            !this.allPokemon.some(
+              (existingItem) => existingItem.name === newItem.name
+            )
         );
 
         this.allPokemon = [...this.allPokemon, ...newPokemonItems];
@@ -104,7 +109,7 @@ export class PokemonListComponent implements OnInit, OnDestroy {
       error: (error) => {
         console.error('Error loading more Pokémon:', error);
         this.isLoading = false;
-      }
+      },
     });
   }
 
@@ -129,7 +134,7 @@ export class PokemonListComponent implements OnInit, OnDestroy {
       error: (error) => {
         console.error('Error filtering by type:', error);
         this.isLoading = false;
-      }
+      },
     });
   }
 
@@ -144,7 +149,7 @@ export class PokemonListComponent implements OnInit, OnDestroy {
   }
 
   getTypeClass(typeName: string): string {
-    const typeClasses: {[key: string]: string} = {
+    const typeClasses: { [key: string]: string } = {
       normal: 'bg-secondary',
       fire: 'bg-danger',
       water: 'bg-primary',
@@ -162,7 +167,7 @@ export class PokemonListComponent implements OnInit, OnDestroy {
       dragon: 'bg-orange',
       dark: 'bg-dark',
       steel: 'bg-steel',
-      fairy: 'bg-pink'
+      fairy: 'bg-pink',
     };
 
     return typeClasses[typeName] || 'bg-secondary';

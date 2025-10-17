@@ -1,5 +1,4 @@
 <div class="container mt-4">
-
   <div class="row mb-3">
     <div class="col-12">
       <a routerLink="/home" class="btn btn-outline-primary mb-3">
@@ -39,10 +38,12 @@
           [src]="pokemon.sprites.other?.['official-artwork']?.front_default || pokemon.sprites.front_default"
           [alt]="pokemon.name"
           class="pokemon-grid-image"
-        >
+        />
         <div class="pokemon-grid-info">
           <h6 class="pokemon-grid-name">{{ pokemon.name | titlecase }}</h6>
-          <span class="pokemon-grid-id">#{{ pokemon.id.toString().padStart(3, '0') }}</span>
+          <span class="pokemon-grid-id"
+            >#{{ pokemon.id.toString().padStart(3, "0") }}</span
+          >
           <div class="pokemon-grid-types">
             <span
               *ngFor="let type of pokemon.types"
@@ -66,20 +67,27 @@
   </div>
 
   <!-- Modal para detalles -->
-  <div *ngIf="showModal" class="modal-backdrop show" (click)="closeModal()"></div>
   <div
     *ngIf="showModal"
-    class="modal show d-block"
-    tabindex="-1"
-  >
+    class="modal-backdrop show"
+    (click)="closeModal()"
+  ></div>
+  <div *ngIf="showModal" class="modal show d-block" tabindex="-1">
     <div class="modal-dialog modal-lg">
       <div class="modal-content" (click)="$event.stopPropagation()">
         <div class="modal-header">
           <h5 class="modal-title">Detalles del Pokémon</h5>
-          <button type="button" class="btn-close" (click)="closeModal()"></button>
+          <button
+            type="button"
+            class="btn-close"
+            (click)="closeModal()"
+          ></button>
         </div>
         <div class="modal-body">
-          <app-card *ngIf="selectedPokemon" [pokemon]="selectedPokemon"></app-card>
+          <app-card
+            *ngIf="selectedPokemon"
+            [pokemon]="selectedPokemon"
+          ></app-card>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Pokemon } from '../../model/pokemon';
 
@@ -7,10 +7,9 @@ import { Pokemon } from '../../model/pokemon';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './card.component.html',
-  styleUrl: './card.component.css'
+  styleUrl: './card.component.css',
 })
 export class CardComponent {
-
   @Input() pokemon: Pokemon | null = null;
   isFlipped = false;
 
@@ -21,14 +20,14 @@ export class CardComponent {
   getStatValue(statName: string): number {
     if (!this.pokemon) return 0;
 
-    const stat = this.pokemon.stats.find(s =>
-      s.stat.name === statName.toLowerCase()
+    const stat = this.pokemon.stats.find(
+      (s) => s.stat.name === statName.toLowerCase()
     );
     return stat ? stat.base_stat : 0;
   }
 
   getTypeClass(typeName: string): string {
-    const typeClasses: {[key: string]: string} = {
+    const typeClasses: { [key: string]: string } = {
       normal: 'bg-secondary',
       fire: 'bg-danger',
       water: 'bg-primary',
@@ -46,10 +45,9 @@ export class CardComponent {
       dragon: 'bg-orange',
       dark: 'bg-dark',
       steel: 'bg-steel',
-      fairy: 'bg-pink'
+      fairy: 'bg-pink',
     };
 
     return typeClasses[typeName] || 'bg-secondary';
   }
-
 }
