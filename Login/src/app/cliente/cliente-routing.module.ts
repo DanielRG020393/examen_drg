@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClienteComponent } from './cliente.component';
 import { AuthGuard } from '../guards/auth.guard';
+import { ClienteguardGuard } from '../guards/clienteguard.guard';
 import { InicioComponent } from './inicio/inicio.component';
-
 
 const routes: Routes = [
   {
@@ -14,7 +14,7 @@ const routes: Routes = [
   {
     path: 'Inicio', // /Cliente/Inicio
     component: ClienteComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, ClienteguardGuard],
     children: [
       {
         path: '',
