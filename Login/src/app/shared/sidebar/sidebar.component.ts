@@ -78,6 +78,29 @@ export class SidebarComponent implements OnInit {
           url: '',
         },
       ];
+    } else{
+
+      if (this.per == 2) {
+        // Menú exclusivo para perfil 2 - Cliente
+        this.menuItems = [
+          {
+            icon: 'fa fa-building-wheat',
+            label: 'Menú Cliente',
+            isOpen: true,
+            children: [
+              {
+                icon: 'fas fa-circle',
+                label: 'Sub-C 1',
+                tag: '',
+                url: '',
+              },
+            ],
+            tag: '',
+            url: '',
+          },
+        ];
+      }
+
     }
   }
 

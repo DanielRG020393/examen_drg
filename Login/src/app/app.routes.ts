@@ -9,5 +9,10 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./administrador/administrador.module').then((m) => m.AdministradorModule),
   },
+  {
+    path: 'Cliente',
+    loadChildren: () =>
+      import('./cliente/cliente.module').then((m) => m.ClienteModule),
+  },
   { path: '**', redirectTo: 'login' },
 ];
