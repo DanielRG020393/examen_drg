@@ -1,0 +1,87 @@
+<div class="container mt-4">
+
+  <div class="row mb-3">
+    <div class="col-12">
+      <a routerLink="/home" class="btn btn-outline-primary mb-3">
+        <i class="fas fa-arrow-left me-2"></i>Volver al Inicio
+      </a>
+    </div>
+  </div>
+
+  <h2 class="text-center mb-4">Pokédex</h2>
+
+  <!-- Filtro por tipo -->
+  <div class="row mb-4">
+    <div class="col-md-6 mx-auto">
+      <label for="typeFilter" class="form-label">Filtrar por tipo:</label>
+      <select
+        id="typeFilter"
+        class="form-select"
+        [(ngModel)]="selectedType"
+        (change)="onTypeChange()"
+      >
+        <option value="">Todos los tipos</option>
+        <option *ngFor="let type of types" [value]="type.name">
+          {{ type.name | titlecase }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Grid de Pokémon -->
+  <div class="row g-3">
+    <div
+      *ngFor="let pokemon of filteredPokemon"
+      class="col-6 col-md-4 col-lg-3"
+    >
+      <div class="pokemon-grid-card" (click)="openModal(pokemon)">
+        <img
+          [src]="pokemon.sprites.other?.['official-artwork']?.front_default || pokemon.sprites.front_default"
+          [alt]="pokemon.name"
+          class="pokemon-grid-image"
+        >
+        <div class="pokemon-grid-info">
+          <h6 class="pokemon-grid-name">{{ pokemon.name | titlecase }}</h6>
+          <span class="pokemon-grid-id">#{{ pokemon.id.toString().padStart(3, '0') }}</span>
+          <div class="pokemon-grid-types">
+            <span
+              *ngFor="let type of pokemon.types"
+              class="badge type-badge-small"
+              [ngClass]="getTypeClass(type.type.name)"
+            >
+              {{ type.type.name | titlecase }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loader -->
+  <div *ngIf="isLoading" class="text-center mt-4">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+    <p class="mt-2">Cargando más Pokémon...</p>
+  </div>
+
+  <!-- Modal para detalles -->
+  <div *ngIf="showModal" class="modal-backdrop show" (click)="closeModal()"></div>
+  <div
+    *ngIf="showModal"
+    class="modal show d-block"
+    tabindex="-1"
+  >
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+          <h5 class="modal-title">Detalles del Pokémon</h5>
+          <button type="button" class="btn-close" (click)="closeModal()"></button>
+        </div>
+        <div class="modal-body">
+          <app-card *ngIf="selectedPokemon" [pokemon]="selectedPokemon"></app-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
