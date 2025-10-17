@@ -5,14 +5,10 @@ import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-
-  constructor(
-    private auth: AuthService,
-    private router: Router,
-  ) {}
+  constructor(private auth: AuthService, private router: Router) {}
 
   canActivate(): Observable<boolean> {
     // Verificar en localStorage primero
@@ -34,7 +30,7 @@ export class AuthGuard implements CanActivate {
     const user = JSON.parse(storedUser);
 
     return this.auth.busquedadetoken(user.usu_login, storedToken).pipe(
-      map(response => {
+      map((response) => {
         if (!response) {
           this.clearStorageAndRedirect();
           return false;

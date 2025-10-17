@@ -28,13 +28,9 @@ export class SidebarComponent implements OnInit {
   menuItems: MenuItem[] = [];
   per: any;
 
-  constructor(
-    private router: Router,
-    private auth: AuthService,
-  ) {}
+  constructor(private router: Router, private auth: AuthService) {}
 
   async ngOnInit(): Promise<void> {
-
     // Obtener usuario desde localStorage
     const storedUser = localStorage.getItem('currentUser');
     console.log('Datos en localStorage:', storedUser);
@@ -47,10 +43,10 @@ export class SidebarComponent implements OnInit {
       this.per = user.id_perfil;
 
       console.log('Valores asignados:', {
-      nombre: this.nombre,
-      tipo: this.tipo,
-      per: this.per
-    });
+        nombre: this.nombre,
+        tipo: this.tipo,
+        per: this.per,
+      });
     }
 
     if (this.per == 1) {
@@ -78,8 +74,7 @@ export class SidebarComponent implements OnInit {
           url: '',
         },
       ];
-    } else{
-
+    } else {
       if (this.per == 2) {
         // Menú exclusivo para perfil 2 - Cliente
         this.menuItems = [
@@ -100,10 +95,8 @@ export class SidebarComponent implements OnInit {
           },
         ];
       }
-
     }
   }
-
 
   toggleSidebar() {
     this.sidebarToggle.emit();

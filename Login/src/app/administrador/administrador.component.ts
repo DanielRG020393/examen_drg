@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
   selector: 'app-administrador',
   imports: [CommonModule, SidebarComponent, RouterModule],
   templateUrl: './administrador.component.html',
-  styleUrl: './administrador.component.css'
+  styleUrl: './administrador.component.css',
 })
 export class AdministradorComponent {
   isSidebarCollapsed = false;
@@ -16,8 +16,7 @@ export class AdministradorComponent {
     this.isSidebarCollapsed = !this.isSidebarCollapsed;
   }
 
-  onActive(){
-    window.scroll(0,0);
+  onActive() {
+    window.scroll(0, 0);
   }
-
 }

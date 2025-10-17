@@ -1,22 +1,23 @@
 <div class="sidebar" [ngClass]="{ 'sidebar-collapsed': isSidebarCollapsed }">
   <div class="sidebar-header">
-   <img src="logo.png" alt="" width="200px">
+    <img src="logo.png" alt="" width="200px" />
   </div>
 
   <p class="user_nom">
-    <i class="fas fa-user esp"></i>{{nombre}}
-      <br>
-    <i class="tipo-centrado">{{tipo}}</i>
+    <i class="fas fa-user esp"></i>{{ nombre }}
+    <br />
+    <i class="tipo-centrado">{{ tipo }}</i>
   </p>
 
   <div class="sidebar-menu">
     <ul>
       <ng-container *ngFor="let item of menuItems">
-
         <li class="sidebar-menu-item">
-
-            <a class="sidebar-item" [ngClass]="{ 'has-children': item.children,}" (click)="toggleMenuItem(item)" >
-
+          <a
+            class="sidebar-item"
+            [ngClass]="{ 'has-children': item.children,}"
+            (click)="toggleMenuItem(item)"
+          >
             <i [class]="item.icon"></i>
             <span class="sidebar-item-text">{{ item.label }}</span>
             <i
@@ -27,24 +28,26 @@
           </a>
 
           <ul
-
             *ngIf="item.children && !isSidebarCollapsed && item.isOpen"
             class="sidebar-submenu"
           >
             <li *ngFor="let child of item.children">
-              <a [routerLink]="[{ outlets: { Secc: [child.tag] }}]" class="sidebar-item sidebar-subitem" routerLinkActive="menu-item-active">
+              <a
+                [routerLink]="[{ outlets: { Secc: [child.tag] } }]"
+                class="sidebar-item sidebar-subitem"
+                routerLinkActive="menu-item-active"
+              >
                 <i [class]="child.icon"></i>
                 <span class="sidebar-item-text">{{ child.label }}</span>
               </a>
             </li>
           </ul>
         </li>
-
       </ng-container>
     </ul>
-
   </div>
 
-
-  <button type="button" (click)="logout()" class="cerrar btn btn-danger">Cerrar Sesion</button>
+  <button type="button" (click)="logout()" class="cerrar btn btn-danger">
+    Cerrar Sesion
+  </button>
 </div>
