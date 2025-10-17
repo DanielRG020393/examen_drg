@@ -1,0 +1,127 @@
+.pokemon-card-container {
+  perspective: 1000px;
+  width: 300px;
+  height: 400px;
+  margin: 0 auto;
+}
+
+.pokemon-card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  cursor: pointer;
+  border: 3px solid #000000;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pokemon-card.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+.pokemon-image {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+}
+
+.pokemon-name {
+  color: #333;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+.pokemon-id {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.types-container {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin: 10px 0;
+}
+
+.type-badge {
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.8em;
+}
+
+.pokemon-details {
+  display: flex;
+  justify-content: space-around;
+  font-size: 0.9em;
+}
+
+.detail-item {
+  text-align: center;
+}
+
+.stats-list {
+  padding: 0 15px;
+}
+
+.stat-item {
+  margin-bottom: 15px;
+}
+
+.stat-name {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.progress {
+  height: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8em;
+  color: white;
+  font-weight: bold;
+}
+
+.flip-hint {
+  font-style: italic;
+}
+
+/* Colores personalizados para tipos */
+.bg-purple { background-color: #a040a0; }
+.bg-brown { background-color: #e0c068; }
+.bg-sky { background-color: #a890f0; }
+.bg-pink { background-color: #f85888; }
+.bg-green { background-color: #a8b820; }
+.bg-gray { background-color: #b8a038; }
+.bg-indigo { background-color: #705898; }
+.bg-orange { background-color: #f08030; }
+.bg-steel { background-color: #b8b8d0; }
