@@ -7,10 +7,9 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './buscador.component.html',
-  styleUrl: './buscador.component.css'
+  styleUrl: './buscador.component.css',
 })
 export class BuscadorComponent {
-
   buscar: string = '';
   @Output() search = new EventEmitter<string>();
   @Output() reset = new EventEmitter<void>();
@@ -31,5 +30,4 @@ export class BuscadorComponent {
       this.onSearch();
     }
   }
-
 }

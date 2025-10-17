@@ -30,13 +30,14 @@ export class HomeComponent {
         if (pokemon) {
           this.pokemon = pokemon;
         } else {
-          this.errorMessage = 'No se encontró ningún Pokémon con ese nombre o ID';
+          this.errorMessage =
+            'No se encontró ningún Pokémon con ese nombre o ID';
         }
       },
       error: () => {
         this.isLoading = false;
         this.errorMessage = 'Error al buscar el Pokémon. Intenta nuevamente.';
-      }
+      },
     });
   }
 

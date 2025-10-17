@@ -1,9 +1,5 @@
 <div *ngIf="pokemon" class="pokemon-card-container">
-  <div
-    class="pokemon-card"
-    [class.flipped]="isFlipped"
-    (click)="toggleFlip()"
-  >
+  <div class="pokemon-card" [class.flipped]="isFlipped" (click)="toggleFlip()">
     <!-- Cara frontal -->
     <div class="card-face card-front">
       <div class="card-body text-center">
@@ -11,9 +7,9 @@
           [src]="pokemon.sprites.front_default"
           [alt]="pokemon.name"
           class="pokemon-image"
-        >
+        />
         <h3 class="pokemon-name">{{ pokemon.name | titlecase }}</h3>
-        <p class="pokemon-id">#{{ pokemon.id.toString().padStart(3, '0') }}</p>
+        <p class="pokemon-id">#{{ pokemon.id.toString().padStart(3, "0") }}</p>
 
         <div class="types-container">
           <span
@@ -51,9 +47,9 @@
             <div class="progress">
               <div
                 class="progress-bar bg-success"
-                [style.width.%]="getStatValue('hp') / 255 * 100"
+                [style.width.%]="(getStatValue('hp') / 255) * 100"
               >
-                {{ getStatValue('hp') }}
+                {{ getStatValue("hp") }}
               </div>
             </div>
           </div>
@@ -63,9 +59,9 @@
             <div class="progress">
               <div
                 class="progress-bar bg-danger"
-                [style.width.%]="getStatValue('attack') / 255 * 100"
+                [style.width.%]="(getStatValue('attack') / 255) * 100"
               >
-                {{ getStatValue('attack') }}
+                {{ getStatValue("attack") }}
               </div>
             </div>
           </div>
@@ -75,9 +71,9 @@
             <div class="progress">
               <div
                 class="progress-bar bg-info"
-                [style.width.%]="getStatValue('defense') / 255 * 100"
+                [style.width.%]="(getStatValue('defense') / 255) * 100"
               >
-                {{ getStatValue('defense') }}
+                {{ getStatValue("defense") }}
               </div>
             </div>
           </div>
@@ -87,9 +83,9 @@
             <div class="progress">
               <div
                 class="progress-bar bg-warning"
-                [style.width.%]="getStatValue('speed') / 255 * 100"
+                [style.width.%]="(getStatValue('speed') / 255) * 100"
               >
-                {{ getStatValue('speed') }}
+                {{ getStatValue("speed") }}
               </div>
             </div>
           </div>
