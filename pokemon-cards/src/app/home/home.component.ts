@@ -9,7 +9,7 @@ import { CardComponent } from '../componentes/card/card.component';
   selector: 'app-home',
   imports: [CommonModule, BuscadorComponent, CardComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.css',
 })
 export class HomeComponent {
   pokemon: Pokemon | null = null;
@@ -29,13 +29,14 @@ export class HomeComponent {
         if (pokemon) {
           this.pokemon = pokemon;
         } else {
-          this.errorMessage = 'No se encontró ningún Pokémon con ese nombre o ID';
+          this.errorMessage =
+            'No se encontró ningún Pokémon con ese nombre o ID';
         }
       },
       error: () => {
         this.isLoading = false;
         this.errorMessage = 'Error al buscar el Pokémon. Intenta nuevamente.';
-      }
+      },
     });
   }
 
@@ -44,5 +45,4 @@ export class HomeComponent {
     this.errorMessage = '';
     this.isLoading = false;
   }
-
 }
