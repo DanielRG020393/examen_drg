@@ -9,7 +9,7 @@ const routes: Routes = [
   {
     path: '', // /Cliente
     redirectTo: 'Inicio',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'Inicio', // /Cliente/Inicio

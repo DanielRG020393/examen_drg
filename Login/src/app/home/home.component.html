@@ -1,42 +1,69 @@
 <section class="body">
   <div class="container">
-      <div class="login-box">
-          <div class="row">
-              <p><strong>Usuario 1:</strong> Daniel<br>
-               <strong>Contraseña:</strong> admin123
-            </p>
-            <p><strong>Usuario 2:</strong> Roberto<br>
-               <strong>Contraseña:</strong> cliente123
-            </p>
-          </div>
-          <div class="row">
-              <div class="col-sm-8">
-                  <br>
-                  <h3 class="header-title">Iniciar Sesión</h3>
-                  <form class="login-form" autocomplete="off" [formGroup]="forma" (ngSubmit)="compro()">
-                      <div class="form-group">
-                          <input type="text" class="form-control" formControlName="correo" [class.is-invalid]="correoNoValido" placeholder="Usuario">
-                      </div>
-                      <div class="input-group mb-3">
-                          <input type="Password" [type]="hashedPassword? 'password' : 'text'" class="form-control" formControlName="password" [class.is-invalid]="passwordNoValido" placeholder="Contraseña">
-                          <span (click)="togglePassword()" class="input-group-text" id="basic-addon1" style="height: 38px;">
-                            <i [ngClass]="hashedPassword? 'fas fa-eye' : 'fas fa-eye-slash'"></i>
-                          </span>
-
-                        </div>
-
-                        <div class="d-grid gap-2">
-                          <button class="btn btn-primary btn-lg bgl" type="submit" name="Ingresar">ENTRAR</button>
-                      </div>
-
-                  </form>
-              </div>
-              <div class="col-sm-4 hide-on-mobile">
-
-
-
-              </div>
-          </div>
+    <div class="login-box">
+      <div class="row">
+        <p>
+          <strong>Usuario 1:</strong> Daniel<br />
+          <strong>Contraseña:</strong> admin123
+        </p>
+        <p>
+          <strong>Usuario 2:</strong> Roberto<br />
+          <strong>Contraseña:</strong> cliente123
+        </p>
       </div>
+      <div class="row">
+        <div class="col-sm-8">
+          <br />
+          <h3 class="header-title">Iniciar Sesión</h3>
+          <form
+            class="login-form"
+            autocomplete="off"
+            [formGroup]="forma"
+            (ngSubmit)="compro()"
+          >
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="correo"
+                [class.is-invalid]="correoNoValido"
+                placeholder="Usuario"
+              />
+            </div>
+            <div class="input-group mb-3">
+              <input
+                type="Password"
+                [type]="hashedPassword ? 'password' : 'text'"
+                class="form-control"
+                formControlName="password"
+                [class.is-invalid]="passwordNoValido"
+                placeholder="Contraseña"
+              />
+              <span
+                (click)="togglePassword()"
+                class="input-group-text"
+                id="basic-addon1"
+                style="height: 38px"
+              >
+                <i
+                  [ngClass]="hashedPassword ? 'fas fa-eye' : 'fas fa-eye-slash'"
+                ></i>
+              </span>
+            </div>
+
+            <div class="d-grid gap-2">
+              <button
+                class="btn btn-primary btn-lg bgl"
+                type="submit"
+                name="Ingresar"
+              >
+                ENTRAR
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="col-sm-4 hide-on-mobile"></div>
+      </div>
+    </div>
   </div>
 </section>

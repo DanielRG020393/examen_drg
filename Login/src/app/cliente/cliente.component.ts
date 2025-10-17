@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
   selector: 'app-cliente',
   imports: [CommonModule, SidebarComponent, RouterModule],
   templateUrl: './cliente.component.html',
-  styleUrl: './cliente.component.css'
+  styleUrl: './cliente.component.css',
 })
 export class ClienteComponent {
   isSidebarCollapsed = false;
@@ -16,8 +16,7 @@ export class ClienteComponent {
     this.isSidebarCollapsed = !this.isSidebarCollapsed;
   }
 
-  onActive(){
-    window.scroll(0,0);
+  onActive() {
+    window.scroll(0, 0);
   }
-
 }
