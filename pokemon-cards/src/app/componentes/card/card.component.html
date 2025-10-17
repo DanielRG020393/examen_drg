@@ -1,0 +1,100 @@
+<div *ngIf="pokemon" class="pokemon-card-container">
+  <div class="pokemon-card" [class.flipped]="isFlipped" (click)="toggleFlip()">
+    <!-- Cara frontal -->
+    <div class="card-face card-front">
+      <div class="card-body text-center">
+        <img
+          [src]="pokemon.sprites.front_default"
+          [alt]="pokemon.name"
+          class="pokemon-image"
+        />
+        <h3 class="pokemon-name">{{ pokemon.name | titlecase }}</h3>
+        <p class="pokemon-id">#{{ pokemon.id.toString().padStart(3, "0") }}</p>
+
+        <div class="types-container">
+          <span
+            *ngFor="let type of pokemon.types"
+            class="badge type-badge"
+            [ngClass]="getTypeClass(type.type.name)"
+          >
+            {{ type.type.name | titlecase }}
+          </span>
+        </div>
+
+        <div class="pokemon-details mt-3">
+          <div class="detail-item">
+            <strong>Peso:</strong> {{ pokemon.weight / 10 }} kg
+          </div>
+          <div class="detail-item">
+            <strong>Altura:</strong> {{ pokemon.height / 10 }} m
+          </div>
+        </div>
+
+        <div class="flip-hint mt-3">
+          <small class="text-muted">Click para ver estadísticas</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cara trasera -->
+    <div class="card-face card-back">
+      <div class="card-body">
+        <h4 class="text-center mb-3">Estadísticas Base</h4>
+
+        <div class="stats-list">
+          <div class="stat-item">
+            <span class="stat-name">HP:</span>
+            <div class="progress">
+              <div
+                class="progress-bar bg-success"
+                [style.width.%]="(getStatValue('hp') / 255) * 100"
+              >
+                {{ getStatValue("hp") }}
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-item">
+            <span class="stat-name">Ataque:</span>
+            <div class="progress">
+              <div
+                class="progress-bar bg-danger"
+                [style.width.%]="(getStatValue('attack') / 255) * 100"
+              >
+                {{ getStatValue("attack") }}
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-item">
+            <span class="stat-name">Defensa:</span>
+            <div class="progress">
+              <div
+                class="progress-bar bg-info"
+                [style.width.%]="(getStatValue('defense') / 255) * 100"
+              >
+                {{ getStatValue("defense") }}
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-item">
+            <span class="stat-name">Velocidad:</span>
+            <div class="progress">
+              <div
+                class="progress-bar bg-warning"
+                [style.width.%]="(getStatValue('speed') / 255) * 100"
+              >
+                {{ getStatValue("speed") }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-hint mt-3 text-center">
+          <small class="text-muted">Click para volver</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
