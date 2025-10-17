@@ -7,12 +7,16 @@
       </div>
       <div class="row">
         <div class="col-sm-8">
-          <br>
+          <br />
           <h3 class="header-title">Pokédex App</h3>
 
           <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4">
-            <a routerLink="/home" class="btn btn-outline-primary me-md-2">Búsqueda Individual</a>
-            <a routerLink="/pokedex" class="btn btn-outline-success">Pokédex Completa</a>
+            <a routerLink="/home" class="btn btn-outline-primary me-md-2"
+              >Búsqueda Individual</a
+            >
+            <a routerLink="/pokedex" class="btn btn-outline-success"
+              >Pokédex Completa</a
+            >
           </div>
 
           <app-buscador
@@ -29,17 +33,26 @@
           </div>
 
           <!-- Mensaje de error -->
-          <div *ngIf="errorMessage && !isLoading" class="alert alert-danger text-center">
+          <div
+            *ngIf="errorMessage && !isLoading"
+            class="alert alert-danger text-center"
+          >
             {{ errorMessage }}
           </div>
 
           <!-- Tarjeta del Pokémon -->
-          <div *ngIf="pokemon && !isLoading" class="d-flex justify-content-center">
+          <div
+            *ngIf="pokemon && !isLoading"
+            class="d-flex justify-content-center"
+          >
             <app-card [pokemon]="pokemon"></app-card>
           </div>
 
           <!-- Mensaje inicial -->
-          <div *ngIf="!pokemon && !isLoading && !errorMessage" class="text-center text-muted mt-5">
+          <div
+            *ngIf="!pokemon && !isLoading && !errorMessage"
+            class="text-center text-muted mt-5"
+          >
             <p>Ingresa el nombre o ID de un Pokémon para comenzar</p>
             <p><small>Ejemplos: pikachu, 25, charizard, 150</small></p>
           </div>
