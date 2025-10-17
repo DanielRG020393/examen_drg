@@ -1,0 +1,28 @@
+<div class="search-container">
+  <div class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Ingresa nombre o ID del Pokémon"
+      [(ngModel)]="buscar"
+      (keyup)="onKeyPress($event)"
+    />
+    <button
+      class="btn btn-primary"
+      type="button"
+      (click)="onSearch()"
+      [disabled]="!buscar.trim()"
+    >
+      Buscar
+    </button>
+
+    <button
+      class="btn btn-secondary"
+      type="button"
+      (click)="onReset()"
+      [disabled]="!buscar.trim()"
+    >
+      Reiniciar
+    </button>
+  </div>
+</div>
